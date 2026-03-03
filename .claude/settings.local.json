@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(bunx storybook@latest:*)",
+      "Bash(bun add:*)",
+      "Bash(bun:*)"
+    ]
+  }
+}
