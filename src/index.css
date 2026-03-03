@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* Primary */
+  --color-primary-4:  #E8DDFF;
+  --color-primary-3:  #D0A5FF;
+  --color-primary-2:  #A86DFF;
+  --color-primary-1:  #8A45FF;
+  --color-primary:    #5A68F0;
+  --color-primary-n1: #2176B4;
+  --color-primary-n2: #224B8C;
+
+  /* Gray */
+  --color-gray-100: #484692;
+  --color-gray-200: #4C2B7C;
+  --color-gray-300: #858492;
+  --color-gray-400: #8B8AA7;
+  --color-gray-500: #9B9AAA;
+  --color-gray-600: #B8B8C9;
+  --color-gray-700: #C2C4D3;
+  --color-gray-800: #9F9FB0;
+  --color-gray-900: #F4F1F2;
+
+  /* Status */
+  --color-status-red:    #EF4444;
+  --color-status-yellow: #FCCF55;
+  --color-status-green:  #44CBBC;
+
+  /* Data Visualization */
+  --color-data-1:  #40CFD0;
+  --color-data-2:  #4B8CF5;
+  --color-data-3:  #5A4BF0;
+  --color-data-4:  #9B4BF0;
+  --color-data-5:  #E040CF;
+  --color-data-6:  #F04174;
+  --color-data-7:  #F04141;
+  --color-data-8:  #F07841;
+  --color-data-9:  #F0B541;
+  --color-data-10: #CFE040;
+  --color-data-11: #75E040;
+  --color-data-12: #40E07A;
+  --color-data-13: #40E0C0;
+}
