@@ -19,11 +19,14 @@ export function Button({
   const style = color ? getPaletteStyle(color) : undefined
   const hasTextColor = /text-[\w-]+/.test(className)
   const baseClass = color
-    ? hasTextColor ? '' : 'text-white'
+    ? hasTextColor
+      ? ''
+      : variant === 'dark'
+        ? 'text-white'
+        : 'text-gray-900'
     : variant === 'dark'
       ? 'bg-gray-800 text-white'
       : 'bg-gray-200 text-black'
-
   return (
     <button
       type="button"

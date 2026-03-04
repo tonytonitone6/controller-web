@@ -21,14 +21,29 @@ export const initialGlobals = {
   theme: 'light',
 }
 
+function ThemeWrapper({
+  theme,
+  children,
+}: {
+  theme: string
+  children: React.ReactNode
+}) {
+  React.useEffect(() => {
+    if (typeof document !== 'undefined') {
+      document.documentElement.classList.toggle('dark', theme === 'dark')
+    }
+  }, [theme])
+  return React.createElement(React.Fragment, null, children)
+}
+
 const preview: Preview = {
   decorators: [
     (Story, context) => {
-      const isDark = context?.globals?.theme === 'dark'
-      if (typeof document !== 'undefined') {
-        document.documentElement.classList.toggle('dark', isDark)
-      }
-      return React.createElement(Story)
+      const theme = context?.globals?.theme ?? 'light'
+      return React.createElement(
+        ThemeWrapper,
+        { key: theme, theme, children: React.createElement(Story) }
+      )
     },
   ],
   parameters: {
