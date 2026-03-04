@@ -1,90 +1,133 @@
-@import "tailwindcss";
+@import 'tailwindcss' source('..');
+@source inline('text-red-500');
 
 @variant dark (&:where(.dark, .dark *));
 
 @theme {
-  /* Primary (Light Mode) */
-  --color-primary-4:  #E8DDFF;
-  --color-primary-3:  #D0A5FF;
-  --color-primary-2:  #A86DFF;
-  --color-primary-1:  #8A45FF;
-  --color-primary:    #5A68F0;
-  --color-primary-n1: #2176B4;
-  --color-primary-n2: #224B8C;
+	/* 預設色保留：常用於測試或覆寫文字色 */
+	--color-red-500: #ef4444;
 
-  /* Gray (Light Mode) */
-  --color-gray-100: #484692;
-  --color-gray-200: #4C2B7C;
-  --color-gray-300: #858492;
-  --color-gray-400: #8B8AA7;
-  --color-gray-500: #9B9AAA;
-  --color-gray-600: #B8B8C9;
-  --color-gray-700: #C2C4D3;
-  --color-gray-800: #9F9FB0;
-  --color-gray-900: #F4F1F2;
+	/* Primary (Light Mode) */
+	--color-primary-100: #e6ecff;
+	--color-primary-200: #d6dfff;
+	--color-primary-300: #abbfff;
+	--color-primary-400: #8aa5ff;
+	--color-primary-500: #5a80fd;
+	--color-primary-600: #2755ea;
+	--color-primary-700: #2548bc;
 
-  /* Status (Light Mode) */
-  --color-status-red:    #EF4444;
-  --color-status-yellow: #FCCF55;
-  --color-status-green:  #44CBBC;
+	/* Gray (Light Mode) */
+	--color-gray-100: #f4f4f6;
+	--color-gray-200: #e4e5ed;
+	--color-gray-300: #c2c4d3;
+	--color-gray-400: #b6bbc8;
+	--color-gray-500: #969baa;
+	--color-gray-600: #8e90a1;
+	--color-gray-700: #838492;
+	--color-gray-800: #6c6d7c;
+	--color-gray-900: #484852;
 
-  /* Data Visualization (Light Mode) */
-  --color-data-1:  #40CFD0;
-  --color-data-2:  #4B8CF5;
-  --color-data-3:  #5A4BF0;
-  --color-data-4:  #9B4BF0;
-  --color-data-5:  #E040CF;
-  --color-data-6:  #F04174;
-  --color-data-7:  #F04141;
-  --color-data-8:  #F07841;
-  --color-data-9:  #F0B541;
-  --color-data-10: #CFE040;
-  --color-data-11: #75E040;
-  --color-data-12: #40E07A;
-  --color-data-13: #40E0C0;
+	/* Status (Light Mode) */
+	--color-status-red: #fd5a5a;
+	--color-status-yellow: #fdea5a;
+	--color-status-green: #40e485;
+
+	/* Data Visualization (Light Mode) */
+	--color-viz-1: #95efff;
+	--color-viz-2: #76c8ff;
+	--color-viz-3: #8aa5ff;
+	--color-viz-4: #d29eff;
+	--color-viz-5: #ff87fb;
+	--color-viz-6: #ff6ab7;
+	--color-viz-7: #ff6a6c;
+	--color-viz-8: #ff996a;
+	--color-viz-9: #ffde85;
+	--color-viz-10: #e4ff82;
+	--color-viz-11: #abff9a;
+	--color-viz-12: #79ffb7;
+	--color-viz-13: #abfff1;
 }
 
-/* Dark Mode palette (based on the same structure) */
+/*
+ * The light color palette must also be defined in :root.
+ * Variables defined in @theme may not appear in :root in Storybook or some Vite scenarios,
+ * causing style={{ backgroundColor: 'var(--color-xxx)' }} to not resolve and buttons become transparent.
+ * Adding them to :root here ensures proper resolution, and the following :root { @variant dark } will override them when .dark is present.
+ */
 :root {
-  @variant dark {
-    /* Primary (Dark Mode) */
-    --color-primary-4:  #262045;
-    --color-primary-3:  #322765;
-    --color-primary-2:  #463391;
-    --color-primary-1:  #5C41C0;
-    --color-primary:    #7C5CFF;
-    --color-primary-n1: #4E8AD6;
-    --color-primary-n2: #3A5DA8;
+	--color-primary-100: #e6ecff;
+	--color-primary-200: #d6dfff;
+	--color-primary-300: #abbfff;
+	--color-primary-400: #8aa5ff;
+	--color-primary-500: #5a80fd;
+	--color-primary-600: #2755ea;
+	--color-primary-700: #2548bc;
 
-    /* Gray (Dark Mode) */
-    --color-gray-100: #E5E7EB;
-    --color-gray-200: #D4D4D8;
-    --color-gray-300: #A1A1AA;
-    --color-gray-400: #71717A;
-    --color-gray-500: #52525B;
-    --color-gray-600: #3F3F46;
-    --color-gray-700: #27272A;
-    --color-gray-800: #18181B;
-    --color-gray-900: #020617;
+	--color-gray-100: #f4f4f6;
+	--color-gray-200: #e4e5ed;
+	--color-gray-300: #c2c4d3;
+	--color-gray-400: #b6bbc8;
+	--color-gray-500: #969baa;
+	--color-gray-600: #8e90a1;
+	--color-gray-700: #838492;
+	--color-gray-800: #6c6d7c;
+	--color-gray-900: #484852;
 
-    /* Status (Dark Mode) */
-    --color-status-red:    #F97373;
-    --color-status-yellow: #FBBF24;
-    --color-status-green:  #34D399;
+	--color-status-red: #fd5a5a;
+	--color-status-yellow: #fdea5a;
+	--color-status-green: #40e485;
+	--color-viz-1: #95efff;
+	--color-viz-2: #76c8ff;
+	--color-viz-3: #8aa5ff;
+	--color-viz-4: #d29eff;
+	--color-viz-5: #ff87fb;
+	--color-viz-6: #ff6ab7;
+	--color-viz-7: #ff6a6c;
+	--color-viz-8: #ff996a;
+	--color-viz-9: #ffde85;
+	--color-viz-10: #e4ff82;
+	--color-viz-11: #abff9a;
+	--color-viz-12: #79ffb7;
+	--color-viz-13: #abfff1;
+}
 
-    /* Data Visualization (Dark Mode) */
-    --color-data-1:  #22D3EE;
-    --color-data-2:  #60A5FA;
-    --color-data-3:  #818CF8;
-    --color-data-4:  #A855F7;
-    --color-data-5:  #E879F9;
-    --color-data-6:  #FB7185;
-    --color-data-7:  #F97373;
-    --color-data-8:  #FDBA74;
-    --color-data-9:  #FACC15;
-    --color-data-10: #BEF264;
-    --color-data-11: #4ADE80;
-    --color-data-12: #22C55E;
-    --color-data-13: #2DD4BF;
-  }
+/* Dark color palette: applied to .dark and its children (whole page html.dark or block div.dark are applicable) */
+.dark,
+.dark * {
+	/* Brand Color */
+	--color-primary-100: #e6ecef;
+	--color-primary-200: #d6dfff;
+	--color-primary-300: #abbfff;
+	--color-primary-400: #8aa5ff;
+	--color-primary-500: #5a80fd;
+	--color-primary-600: #2755ea;
+	--color-primary-700: #2548bc;
+	/* Neutral Color */
+	--color-gray-100: #484852;
+	--color-gray-200: #6c6d7c;
+	--color-gray-300: #838492;
+	--color-gray-400: #8e90a1;
+	--color-gray-500: #9698aa;
+	--color-gray-600: #b6b8c8;
+	--color-gray-700: #c2c4d3;
+	--color-gray-800: #e4e5ed;
+	--color-gray-900: #f4f4f6;
+	/* Status Color */
+	--color-status-red: #ef4a4a;
+	--color-status-yellow: #fce95d;
+	--color-status-green: #48eb8c;
+	/* Data Visualization Color */
+	--color-viz-1: #95efff;
+	--color-viz-2: #76c8ff;
+	--color-viz-3: #8aa5ff;
+	--color-viz-4: #d29eff;
+	--color-viz-5: #ff87fb;
+	--color-viz-6: #ff6ab7;
+	--color-viz-7: #ff6a6c;
+	--color-viz-8: #ff996a;
+	--color-viz-9: #ffde85;
+	--color-viz-10: #e4ff82;
+	--color-viz-11: #abff9a;
+	--color-viz-12: #79ffb7;
+	--color-viz-13: #abfff1;
 }

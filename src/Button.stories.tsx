@@ -1,15 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react'
+import Button from './components/Button'
+import { PALETTE_GROUPS, PALETTE_COLORS } from './palette'
 
-function Button({ label, variant = 'light' }: { label: string; variant?: 'light' | 'dark' }) {
-  return (
-    <button
-      className={`px-4 py-2 rounded transition-colors duration-300 ${
-        variant === 'dark' ? 'bg-gray-800 text-white' : 'bg-gray-200 text-black'
-      }`}
-    >
-      {label}
-    </button>
-  )
+const colorOptions = [...PALETTE_COLORS] as const
+const colorMapping: Record<string, typeof PALETTE_COLORS[number] | undefined> = {
+  ...Object.fromEntries(PALETTE_COLORS.map((c) => [c, c])),
 }
 
 const meta: Meta<typeof Button> = {
@@ -17,7 +12,12 @@ const meta: Meta<typeof Button> = {
   component: Button,
   tags: ['autodocs'],
   argTypes: {
-    variant: { control: 'radio', options: ['light', 'dark'] },
+    // variant: { control: 'radio', options: ['light', 'dark'] },
+    color: {
+      control: 'select',
+      options: colorOptions,
+      mapping: colorMapping,
+    },
   },
 }
 
@@ -30,4 +30,28 @@ export const Light: Story = {
 
 export const Dark: Story = {
   args: { label: 'Dark mode', variant: 'dark' },
+}
+
+export const PaletteColor: Story = {
+  args: {
+    label: 'Palette Color',
+    color: "gray-100",
+  },
+}
+
+export const AllPaletteColors: Story = {
+  render: () => (
+    <div className="flex flex-col gap-6">
+      {PALETTE_GROUPS.map(group => (
+        <div key={group.label}>
+          <p className="mb-2 text-sm font-semibold text-gray-500 dark:text-gray-400">{group.label}</p>
+          <div className="flex flex-wrap gap-2">
+            {group.colors.map(color => (
+              <Button key={color} label={color} color={color} />
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  ),
 }

@@ -1,17 +1,19 @@
 import { useState } from 'react'
+import Button from './components/Button'
 import './App.css'
 
 function App() {
   const [dark, setDark] = useState(false)
 
+  const toggleDark = () => {
+    const next = !dark
+    setDark(next)
+    document.documentElement.classList.toggle('dark', next)
+  }
+
   return (
-    <div className={`min-h-screen transition-colors duration-300 ${dark ? 'bg-primary-1' : 'bg-white'}`}>
-      <button
-        onClick={() => setDark(prev => !prev)}
-        className="m-4 px-4 py-2 rounded bg-gray-200 text-black"
-      >
-        {dark ? 'Light mode' : 'Dark mode'}
-      </button>
+    <div className="min-h-screen transition-colors duration-300 bg-white dark:bg-primary-1">
+      <Button label="Toggle Dark" color="gray-100" onClick={toggleDark} />
     </div>
   )
 }
