@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Card } from './components/Card'
-import { PALETTE_GROUPS, PALETTE_COLORS } from './palette'
+import { Card } from '@component/Card'
+import { PALETTE_GROUPS, PALETTE_COLORS } from '../../palette'
 
 const colorOptions = [...PALETTE_COLORS] as const
 const colorMapping = Object.fromEntries(PALETTE_COLORS.map(c => [c, c]))

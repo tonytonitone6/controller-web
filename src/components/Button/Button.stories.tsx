@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import Button from './components/Button'
-import { PALETTE_GROUPS, PALETTE_COLORS } from './palette'
+import Button from '@component/Button'
+import type { ButtonProps } from '@component/Button'
+import { PALETTE_GROUPS, PALETTE_COLORS } from '../../palette'
 
 const colorOptions = [...PALETTE_COLORS] as const
 const colorMapping: Record<string, typeof PALETTE_COLORS[number] | undefined> = {
@@ -12,30 +13,42 @@ const meta: Meta<typeof Button> = {
   component: Button,
   tags: ['autodocs'],
   argTypes: {
-    // variant: { control: 'radio', options: ['light', 'dark'] },
+    variant: {
+      control: { type: 'radio' },
+      options: ['light', 'dark'],
+    },
     color: {
       control: 'select',
       options: colorOptions,
       mapping: colorMapping,
     },
   },
+  args: {
+    label: 'Button',
+    variant: 'light',
+  },
 }
 
 export default meta
-type Story = StoryObj<typeof Button>
+type Story = StoryObj<ButtonProps>
+
+const Template: Story = (args) => <Button {...args} />
 
 export const Light: Story = {
+  render: Template,
   args: { label: 'Light mode', variant: 'light' },
 }
 
 export const Dark: Story = {
+  render: Template,
   args: { label: 'Dark mode', variant: 'dark' },
 }
 
 export const PaletteColor: Story = {
+  render: Template,
   args: {
     label: 'Palette Color',
-    color: "gray-100",
+    color: 'gray-100',
   },
 }
 

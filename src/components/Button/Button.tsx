@@ -21,12 +21,12 @@ export function Button({
   const baseClass = color
     ? hasTextColor
       ? ''
-      : variant === 'dark'
+      : variant === 'light'
         ? 'text-white'
-        : 'text-gray-900'
-    : variant === 'dark'
-      ? 'bg-gray-800 text-white'
-      : 'bg-gray-200 text-black'
+        : 'text-gray-900 dark:text-gray-100'
+    : variant === 'light'
+      ? 'bg-gray-800 dark:bg-gray-100 text-white dark:text-gray-900'
+      : 'bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-gray-100'
   return (
     <button
       type="button"

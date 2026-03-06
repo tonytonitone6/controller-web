@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Badge } from './components/Badge'
-import { PALETTE_GROUPS, PALETTE_COLORS } from './palette'
+import { Badge } from '@component/Badge'
+import { PALETTE_GROUPS, PALETTE_COLORS } from '../../palette'
 
 const colorOptions = [...PALETTE_COLORS] as const
 const colorMapping = Object.fromEntries(PALETTE_COLORS.map(c => [c, c]))

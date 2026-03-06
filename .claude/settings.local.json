@@ -10,7 +10,8 @@
       "Bash(npx eslint:*)",
       "Bash(npm install:*)",
       "Bash(npm show:*)",
-      "Bash(xargs cat:*)"
+      "Bash(xargs cat:*)",
+      "Bash(ls:*)"
     ]
   }
 }

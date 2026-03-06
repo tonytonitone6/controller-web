@@ -33,7 +33,19 @@ function ThemeWrapper({
       document.documentElement.classList.toggle('dark', theme === 'dark')
     }
   }, [theme])
-  return React.createElement(React.Fragment, null, children)
+  const isDark = theme === 'dark'
+  return React.createElement(
+    'div',
+    {
+      className: isDark ? 'dark' : undefined,
+      style: {
+        minHeight: '100vh',
+        backgroundColor: 'var(--color-gray-100)',
+        color: 'var(--color-gray-900)',
+      },
+    },
+    children,
+  )
 }
 
 const preview: Preview = {
