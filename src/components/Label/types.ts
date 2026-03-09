@@ -1,4 +1,4 @@
-export type SemanticColor = 'primary' | 'secondary' | 'destructive';
+export type SemanticColor = 'primary' | 'secondary' | 'destructive' | 'outline';
 export type PaletteColor = 'orange' | 'yellow' | 'green' | 'purple';
 
 export type LabelColorScheme = SemanticColor | PaletteColor;
@@ -7,7 +7,7 @@ export type LabelShape = 'default' | 'pill' | 'round';
 export type LabelSize = 'sm' | 'md' | 'lg';
 
 export type ColorTokens = {
-	soft: string;
-	outline: string;
-	solid: string;
+  soft: string;
+  outline: string;
+  solid: string;
 };

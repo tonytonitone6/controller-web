@@ -1,6 +1,6 @@
 // import { useState } from 'react'
 import Label from '@component/Label/Label';
-import { Icon } from '@component/Icon';
+// import { Icon } from '@component/Icon';
 import './App.css';
 
 function App() {
@@ -14,9 +14,7 @@ function App() {
 
   return (
     <div className="min-h-screen transition-colors duration-300 bg-white dark:bg-primary-1">
-      <Label colorScheme="primary" leftIcon={<Icon name="circle-check-big" />}>
-        Label
-      </Label>
+      <Label colorScheme="outline">Label</Label>
     </div>
   );
 }

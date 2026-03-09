@@ -1,25 +1,33 @@
 import type { ReactNode, ComponentProps } from 'react';
-import type {
-  LabelColorScheme,
-  LabelVariant,
-  LabelShape,
-  LabelSize,
-} from './types';
+import type { LabelColorScheme, LabelVariant, LabelSize } from './types';
 import { getColorClasses } from './utils';
 import { sizeStyles, shapeStyles } from './spec';
 
-export type LabelProps = Omit<ComponentProps<'span'>, 'children'> & {
+type LabelBaseProps = Omit<ComponentProps<'span'>, 'children'> & {
   children: ReactNode;
   colorScheme?: LabelColorScheme;
   variant?: LabelVariant;
-  shape?: LabelShape;
   size?: LabelSize;
+  disabled?: boolean;
+};
+
+type LabelWithIconProps = LabelBaseProps & {
+  shape?: 'default' | 'pill';
   leftIcon?: ReactNode;
   rightIcon?: ReactNode;
   onLeftIconClick?: () => void;
   onRightIconClick?: () => void;
-  disabled?: boolean;
 };
+
+type LabelRoundProps = LabelBaseProps & {
+  shape: 'round';
+  leftIcon?: never;
+  rightIcon?: never;
+  onLeftIconClick?: never;
+  onRightIconClick?: never;
+};
+
+export type LabelProps = LabelWithIconProps | LabelRoundProps;
 
 const Label = ({
   children,
