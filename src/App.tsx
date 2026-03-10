@@ -1,11 +1,11 @@
-// import { useState } from 'react'
+import { useState } from 'react'
 // import Label from '@/components/Label/Label';
-// import { Icon } from '@/components/Icon';
+import { Icon } from '@/components/Icon';
 import Button from '@/components/Button/Button';
 import './App.css';
 
 function App() {
-  // const [dark, setDark] = useState(false)
+  const [dark, setDark] = useState(false)
 
   // const toggleDark = () => {
   //   const next = !dark
@@ -16,11 +16,11 @@ function App() {
   return (
     <div className="min-h-screen transition-colors duration-300 bg-white dark:bg-primary-1">
       {/* <Label colorScheme="outline">Label</Label> */}
-      <Button variant="primary" loading>
+      <Button variant="primary" size='md'>
         Button
       </Button>
-      <Button variant="secondary">Button</Button>
-      <Button variant="destructive" disabled>
+      <Button variant="secondary" size='md'>Button</Button>
+      <Button variant="destructive" size='md' disabled>
         Button
       </Button>
     </div>

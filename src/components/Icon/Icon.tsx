@@ -1,6 +1,4 @@
-import React, {
-  lazy,
-  Suspense,
+import {
   type ComponentProps,
   type FC,
   memo,
@@ -70,27 +68,20 @@ export interface IconProps extends Omit<ComponentProps<'svg'>, 'name'> {
   size?: number;
   strokeWidth?: number;
   label?: string;
-  fallback?: React.ReactNode;
 }
 
 const modules = import.meta.glob<SVGComponent>('../../assets/icons/**/*.svg', {
   query: '?react',
   import: 'default',
+  eager: true,
 });
 
-const iconRegistry = new Map<string, React.LazyExoticComponent<SVGComponent>>();
+const iconRegistry = new Map<string, SVGComponent>();
 
-for (const [path, loader] of Object.entries(modules)) {
+for (const [path, Component] of Object.entries(modules)) {
   const match = path.match(/\/icons\/(.+)\.svg$/);
   if (match) {
-    const name = match[1];
-    iconRegistry.set(
-      name,
-      lazy(async () => {
-        const Component = await loader();
-        return { default: Component };
-      }),
-    );
+    iconRegistry.set(match[1], Component);
   }
 }
 
@@ -112,36 +103,31 @@ const Icon: FC<IconProps> = memo(
     size = 16,
     strokeWidth,
     label,
-    fallback,
     className,
     style,
     ...rest
   }) => {
-    const LazyIcon = iconRegistry.get(name);
+    const SvgIcon = iconRegistry.get(name);
 
-    if (!LazyIcon) {
+    if (!SvgIcon) {
       if (import.meta.env.DEV) {
         console.warn(`[Icon] "${name}" not found in assets/icons/`);
       }
       return <DefaultFallback size={size} />;
     }
 
-    const iconProps = {
-      width: size,
-      height: size,
-      strokeWidth,
-      'aria-hidden': label ? undefined : true,
-      'aria-label': label,
-      role: label ? 'img' : 'presentation',
-      className,
-      style: { flexShrink: 0, ...style },
-      ...rest,
-    };
-    console.log(iconProps);
     return (
-      <Suspense fallback={fallback ?? <DefaultFallback size={size} />}>
-        {React.createElement(LazyIcon, iconProps)}
-      </Suspense>
+      <SvgIcon
+        width={size}
+        height={size}
+        strokeWidth={strokeWidth}
+        aria-hidden={label ? undefined : true}
+        aria-label={label}
+        role={label ? 'img' : 'presentation'}
+        className={className}
+        style={{ flexShrink: 0, ...style }}
+        {...rest}
+      />
     );
   },
 );
