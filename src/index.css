@@ -8,7 +8,7 @@
 
 @variant dark (&:where(.dark, .dark *));
 
-.label-gradient-border {
+@utility label-gradient-border {
   border: 1px solid transparent;
   background:
     linear-gradient(#fff, #fff) padding-box,
