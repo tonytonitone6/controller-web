@@ -1,12 +1,14 @@
 import { useState } from 'react'
 // import Label from '@/components/Label/Label';
-import { Icon } from '@/components/Icon';
-import Button from '@/components/Button/Button';
-import Tab from '@/components/Tab/Tab';
+// import { Icon } from '@/components/Icon';
+// import Button from '@/components/Button/Button';
+// import Tab from '@/components/Tab/Tab';
+import Checkbox from '@/components/Checkbox/Checkbox';
+import WebRTCStreamer from '@/modules/webRTCv2/WebRTCStreamerV2';
 import './App.css';
 
 function App() {
-  const [dark, setDark] = useState(false)
+  const [checked, setChecked] = useState(false)
 
   // const toggleDark = () => {
   //   const next = !dark
@@ -16,6 +18,9 @@ function App() {
 
   return (
     <div className="min-h-screen transition-colors duration-300 bg-white dark:bg-primary-1">
+      {/* <Checkbox checked={checked} onChange={() => {
+        setChecked(!checked)
+      }} /> */}
       {/* <Label colorScheme="outline">Label</Label> */}
       {/* <Button variant="primary" size='md'>
         Button
@@ -24,7 +29,8 @@ function App() {
       <Button variant="destructive" size='md' disabled>
         Button
       </Button> */}
-      <Tab variant="focus">Tab</Tab>
+      {/* <Tab variant="focus">Tab</Tab> */}
+      <WebRTCStreamer />
     </div>
   );
 }

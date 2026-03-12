@@ -11,7 +11,9 @@
       "Bash(npm install:*)",
       "Bash(npm show:*)",
       "Bash(xargs cat:*)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "Bash(cp -r /Users/stan/controller-web/src/modules/webRTCv2 /Users/stan/frontend-poc/src/modules/webRTCv2)",
+      "Bash(mkdir -p /Users/stan/frontend-poc/src/modules && cp -r /Users/stan/controller-web/src/modules/webRTCv2 /Users/stan/frontend-poc/src/modules/)"
     ]
   }
 }
